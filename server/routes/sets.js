@@ -37,3 +37,25 @@ export async function removeSet(ctx) {
 
   ctx.body = response ? { success: true } : { success: false }
 }
+
+export async function updateSet(ctx) {
+  const { fields } = ctx.request
+
+  if (!fields.title) throw new Exception('[set title] not provided')
+
+  const response = await Set.findByIdAndUpdate(fields.id, fields, { new: true })
+
+  ctx.body = response
+}
+
+export async function addSong(ctx) {
+  const { fields } = ctx.request
+
+  if (!fields.songId) throw new Exception('[song id] not provided')
+
+  const response = await Set.findByIdAndUpdate(fields.setId,
+    { "$push": { "songs": fields.songId } },
+  { new: true })
+
+  ctx.body = response
+}

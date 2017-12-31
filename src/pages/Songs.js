@@ -4,13 +4,20 @@ import AddSong from '../components/setlists/AddSong'
 import Song from '../components/setlists/Song'
 
 @inject('state')
+@inject('store')
 @observer
 class Songs extends React.Component {
 
   // When route is loaded (isomorphic)
-  static async onEnter({ state, store }, params) {
+  // static async onEnter({ state, store }, params) {
+  //   state.common.title = 'Songs'
+  //   await store.songs.browse()
+  // }
+
+  componentDidMount() {
+    const { state, store } = this.props
     state.common.title = 'Songs'
-    await store.setLists.browse()
+    store.songs.browse();
   }
 
   render() {
@@ -21,7 +28,7 @@ class Songs extends React.Component {
         <div className="home">
           <AddSong />
           <section className="main">
-            <ul className="todo-list">
+            <ul className="item-list">
               {state.songs.map((item, index) => {
                 return <Song key={index} item={item}/>
               })}

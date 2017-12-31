@@ -19,21 +19,19 @@ class Menu extends React.Component {
 
 function LoggedInMenu() {
   return <menu>
-    <Link to="/">Home</Link>
-    <Link to="/page/setlists">Set Lists</Link>
-    <Link to="/page/sets">Sets</Link>
-    <Link to="/page/songs">Songs</Link>
-    <Link to="/page/about">About</Link>
-    <Link to="/page/logout">Logout</Link>
+    <Link to="/home">Home</Link>
+    <Link to="/setlists">Set Lists</Link>
+    <Link to="/sets">Sets</Link>
+    <Link to="/songs">Songs</Link>
+    <Link to="/logout">Logout</Link>
   </menu>
 }
 
 function LoggedOutMenu() {
   return <menu>
     <Link to="/">Home</Link>
-    <Link to="/page/about">About</Link>
-    <Link to="/page/register">Register</Link>
-    <Link to="/page/login">Login</Link>
+    <Link to="/register">Register</Link>
+    <Link to="/login">Login</Link>
   </menu>
 }
 

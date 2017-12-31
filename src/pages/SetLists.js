@@ -4,13 +4,20 @@ import AddSetList from '../components/setlists/AddSetList'
 import SetList from '../components/setlists/SetList'
 
 @inject('state')
+@inject('store')
 @observer
 class SetLists extends React.Component {
 
   // When route is loaded (isomorphic)
-  static async onEnter({ state, store }, params) {
+  // static async onEnter({ state, store }, params) {
+  //   state.common.title = 'Set Lists'
+  //   await store.setLists.browse()
+  // }
+
+  componentDidMount() {
+    const { state, store } = this.props
     state.common.title = 'Set Lists'
-    await store.setLists.browse()
+    store.setLists.browse();
   }
 
   render() {
@@ -21,7 +28,7 @@ class SetLists extends React.Component {
         <div className="home">
           <AddSetList/>
           <section className="main">
-            <ul className="todo-list">
+            <ul className="item-list">
               {state.setLists.map((item, index) => {
                 return <SetList key={index} item={item}/>
               })}

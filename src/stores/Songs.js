@@ -21,6 +21,15 @@ export default class Songs {
     }
   }
 
+  @action async update(item) {
+    try {
+      await this.request.post(`api/songs/update`, item)
+      this.state.updateSong(item)
+    } catch(err) {
+      console.error(err)
+    }
+  }
+
   @action async browse() {
     this.state.songs = await this.request.get(`api/songs`)
   }

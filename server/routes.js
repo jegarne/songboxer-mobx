@@ -18,9 +18,12 @@ router.post('/api/setlists/remove', authorize, setlists.removeSetList)
 router.get('/api/sets', sets.getSets)
 router.post('/api/sets/add', sets.addSet)
 router.post('/api/sets/remove', authorize, sets.removeSet)
+router.post('/api/sets/update', sets.updateSet)
+router.post('/api/sets/addSong', sets.addSong)
 
 router.get('/api/songs', songs.getSongs)
 router.post('/api/songs/add', songs.addSong)
 router.post('/api/songs/remove', authorize, songs.removeSong)
+router.post('/api/songs/update', songs.updateSong)
 
 export default router

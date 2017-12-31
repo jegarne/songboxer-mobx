@@ -27,7 +27,7 @@ class AddSet extends React.Component {
         <p>
           <input
             type="text"
-            className="new-todo"
+            className="new-item"
             placeholder="Add a new set"
             value={this.inputText}
             onChange={this.handleChange}

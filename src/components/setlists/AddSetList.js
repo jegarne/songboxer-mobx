@@ -27,7 +27,7 @@ class AddSetList extends React.Component {
         <p>
           <input
             type="text"
-            className="new-todo"
+            className="new-item"
             placeholder="Add a new set list"
             value={this.inputText}
             onChange={this.handleChange}

@@ -37,3 +37,13 @@ export async function removeSong(ctx) {
 
   ctx.body = response ? { success: true } : { success: false }
 }
+
+export async function updateSong(ctx) {
+  const { fields } = ctx.request
+
+  if (!fields.title) throw new Exception('[Song title] not provided')
+
+  const response = await Song.findByIdAndUpdate(fields.id, fields, { new: true })
+
+  ctx.body = response
+}

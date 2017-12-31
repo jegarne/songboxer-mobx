@@ -4,6 +4,8 @@ import config from '../server/config'
 // Use native promises
 mongoose.Promise = Promise
 
+mongoose.set('debug', true)
+
 // Initialize our database
 mongoose.connect(config.databases.mongo, {
   useMongoClient: true
