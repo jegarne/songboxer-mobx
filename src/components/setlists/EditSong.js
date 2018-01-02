@@ -28,7 +28,7 @@ class EditSong extends React.Component {
   render() {
     let{item} = this.props;
     return (
-      <div>
+      <div className="list-entry">
       <form onSubmit={this.handleSubmit}>
         <InputField name="title" value={item.title} onChange={this.updateProperty}/>
         <InputField name="artist" value={item.artist} onChange={this.updateProperty}/>

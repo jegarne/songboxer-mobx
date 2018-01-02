@@ -41,10 +41,6 @@ class SongDetail extends React.Component {
       this.setState({isEdit: false});
     }
 
-    this.goBack = () => {
-      this.props.history.push('/songs');
-    }
-
     this.toggleNotes = () => {
       if (!this.state.areNotesReadOnly) {
         let song = Object.assign({}, this.state.item)
@@ -114,7 +110,6 @@ class SongDetail extends React.Component {
           ? <EditSong item={item} closeEdit={this.closeEdit}/>
           : <div className="song-detail">
               <div>
-                <button className="detail-button back" onClick={(e) => this.goBack()}/>
                 <button className="detail-button edit" onClick={(e) => this.setState({isEdit: true})}/>
                 <button className="detail-button destroy" onClick={(e) => store.songs.remove(item)}/>
               </div>

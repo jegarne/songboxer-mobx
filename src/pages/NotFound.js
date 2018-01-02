@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 class NotFound extends React.Component {
   render() {
     return (
-      <main className="">
+      <main>
         <h3>Page not found. Are you lost ?</h3>
 
         <Link to="/">Main menu</Link>

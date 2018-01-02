@@ -50,14 +50,13 @@ class EditSet extends React.Component {
   render() {
     let{state, item} = this.props;
     return (
-      <div>
+      <div className="list-entry">
       <form onSubmit={this.handleSubmit}>
         <InputField name="title" value={item.title}
           onChange={this.updateProperty}/>
-        <br />
         <div className="form-group">
           <label>songs</label>
-          <Select style={{width:'400px'}}
+          <Select
           name="form-field-name"
           placeholder={"Songs"}
           multi={true}
@@ -69,14 +68,14 @@ class EditSet extends React.Component {
 
         <input type="submit" value="save" />
       </form>
-      <ol>
+      {/* <ol>
         {item.songs.map((id, index) => {
           let song = state.songs.find(s => s.id === id)
           let songComp = song === undefined ? '' :
           <li key={index}>{index + 1}. {song.title}</li>
           return songComp
         })}
-      </ol>
+      </ol> */}
       </div>
     )
   }

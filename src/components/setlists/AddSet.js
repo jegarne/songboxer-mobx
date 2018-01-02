@@ -23,7 +23,7 @@ class AddSet extends React.Component {
 
   render() {
     return (
-      <form className="header" onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit}>
         <p>
           <input
             type="text"

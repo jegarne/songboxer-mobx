@@ -15,7 +15,7 @@ class SongEntry extends React.Component {
     return (
       <div className="list-entry">
         <p className="title">
-          <Link to={"/songdetail/" + item.id}>{count+1}. {item.title}</Link>
+          <p>{count+1}. {item.title}</p>
         </p>
       </div>
     )

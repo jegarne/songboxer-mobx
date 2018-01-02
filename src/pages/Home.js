@@ -22,7 +22,7 @@ class Home extends React.Component {
     const {state} = this.props
     return (<main>
       <h1>...</h1>
-      <div className="home">
+      <div className="list-container">
       </div>
     </main>)
   }

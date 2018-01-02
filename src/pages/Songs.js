@@ -24,16 +24,14 @@ class Songs extends React.Component {
     const { state } = this.props
     return (
       <main>
-        <h1>Songs</h1>
-        <div className="home">
+        <h1>.</h1>
+        <div className="list-container">
           <AddSong />
-          <section className="main">
             <div className="item-list">
               {state.songs.map((item, index) => {
-                return <SongEntry key={index} item={item}/>
+                return <SongEntry key={index} count={index} item={item}/>
               })}
             </div>
-          </section>
         </div>
       </main>
     )

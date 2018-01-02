@@ -1,6 +1,6 @@
 import React from 'react'
-import { observable } from 'mobx'
-import { observer, inject } from 'mobx-react'
+import {observable} from 'mobx'
+import {observer, inject} from 'mobx-react'
 import InputField from '../common/InputField'
 import Select from 'react-select';
 
@@ -8,7 +8,7 @@ import Select from 'react-select';
 @inject('state')
 @observer
 class EditSetList extends React.Component {
-    constructor (props) {
+  constructor(props) {
     super(props)
 
     this.state = {
@@ -26,7 +26,7 @@ class EditSetList extends React.Component {
 
     this.handleSubmit = (e) => {
       e.preventDefault()
-      const { item, store } = this.props
+      const {item, store} = this.props
       store.setLists.update(item).then(() => {
         this.props.closeEdit();
       })
@@ -34,51 +34,44 @@ class EditSetList extends React.Component {
 
   } // end constructor
 
-  componentDidMount(){
-    if(this.props.item.sets){
+  componentDidMount() {
+    if (this.props.item.sets) {
       let setListSets = [];
       this.props.item.sets.forEach((setId) => {
-          let tempSet = this.props.state.sets.find(s => s.id === setId);
-          if(tempSet !== undefined) setListSets.push(tempSet);
+        let tempSet = this.props.state.sets.find(s => s.id === setId);
+        if (tempSet !== undefined)
+          setListSets.push(tempSet);
         }
       );
-      let selectedSets = setListSets.map((s) => ({value:s.id, label:s.title}));
+      let selectedSets = setListSets.map((s) => ({value: s.id, label: s.title}));
       this.updateSelectedSets(selectedSets);
     }
   }
 
   render() {
-    let{state, item} = this.props;
-    return (
-      <div>
+    let {state, item} = this.props;
+    return (<div className="list-entry">
       <form onSubmit={this.handleSubmit}>
-        <InputField name="title" value={item.title}
-          onChange={this.updateProperty}/>
-        <br />
+        <InputField name="title" value={item.title} onChange={this.updateProperty}/>
         <div className="form-group">
-          <h3>sets</h3>
-          <Select style={{width:'400px'}}
-          name="form-field-name"
-          placeholder={"Sets"}
-          multi={true}
-          value={this.state.selectedSets}
-          options={state.sets.map((s) => ({value:s.id, label:s.title}))}
-          onChange={this.updateSelectedSets}
-          />
+          <label>sets</label>
+          <Select name="form-field-name" placeholder={"Sets"} multi={true} value={this.state.selectedSets} options={state.sets.map((s) => ({value: s.id, label: s.title}))} onChange={this.updateSelectedSets}/>
         </div>
-
-        <input type="submit" value="save" />
+        <input type="submit" value="save"/>
       </form>
-      <ol>
-        {item.sets.map((id, index) => {
-          let set = state.sets.find(s => s.id === id)
-          let setComp = set === undefined ? '' :
-          <li key={index}>{index + 1}. {set.title}</li>
-          return setComp
-        })}
-      </ol>
-      </div>
-    )
+      {/* <ol>
+        {
+          item.sets.map((id, index) => {
+            let set = state.sets.find(s => s.id === id)
+            let setComp = set === undefined
+              ? ''
+              : <li key={index}>{index + 1}. {set.title}</li>
+            return setComp
+          })
+        }
+      </ol> */
+      }
+    </div>)
   }
 }
 

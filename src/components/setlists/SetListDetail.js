@@ -1,12 +1,12 @@
 import React from 'react'
 import {observer, inject} from 'mobx-react'
-import EditSet from './EditSet'
-import SongEntry from './SongEntry'
+import EditSetList from './EditSetList'
+import SetEntry from './SetEntry'
 
 @inject('store')
 @inject('state')
 @observer
-class Set extends React.Component {
+class SetListDetail extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -22,19 +22,19 @@ class Set extends React.Component {
     return (<div>
       {
         this.state.isEdit
-          ? <EditSet item={item} closeEdit={this.closeEdit}/>
-          : <div className="view">
+          ? <EditSetList item={item} closeEdit={this.closeEdit}/>
+          : <div className="list-entry">
               <p>{item.title}
                 <button className="edit" onClick={(e) => this.setState({isEdit: true})}/>
-                <button className="destroy" onClick={(e) => store.sets.remove(item)}/>
+                <button className="destroy" onClick={(e) => store.setLists.remove(item)}/>
               </p>
               {
-                item.songs.map((id, index) => {
-                  let song = state.songs.find(s => s.id === id)
-                  let songComp = song === undefined
+                item.sets.map((id, index) => {
+                  let set = state.sets.find(s => s.id === id)
+                  let setComp = set === undefined
                     ? ''
-                    : <SongEntry key={index} item={song}/>
-                  return songComp
+                    : <SetEntry key={index} count={index} item={set}/>
+                  return setComp
                 })
               }
             </div>
@@ -43,4 +43,4 @@ class Set extends React.Component {
   }
 }
 
-export default Set
+export default SetListDetail

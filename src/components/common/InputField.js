@@ -18,7 +18,7 @@ export default class InputField extends Component {
       <div className="form-group">
         <label htmlFor={input.id}>{input.label || input.name}</label>
         <input
-            className="form-control"
+            className="Select-control"
             id={input.id}
             name={input.name}
             onChange={this.onChange}

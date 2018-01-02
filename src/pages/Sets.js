@@ -1,7 +1,7 @@
 import React from 'react'
-import { observer, inject } from 'mobx-react'
+import {observer, inject} from 'mobx-react'
 import AddSet from '../components/setlists/AddSet'
-import Set from '../components/setlists/Set'
+import SetDetail from '../components/setlists/SetDetail'
 
 @inject('state')
 @inject('store')
@@ -15,30 +15,27 @@ class Sets extends React.Component {
   // }
 
   componentDidMount() {
-    const { state, store } = this.props
+    const {state, store} = this.props
     state.common.title = 'Sets'
     store.sets.browse();
     store.songs.browse();
   }
 
-
   render() {
-    const { state } = this.props
-    return (
-      <main>
-        <h1>Sets</h1>
-        <div className="home">
-          <AddSet />
-          <section className="main">
-            <div className="item-list">
-              {state.sets.map((item, index) => {
-                return <Set key={index} item={item}/>
-              })}
-            </div>
-          </section>
+    const {state} = this.props
+    return (<main>
+      <h1>..</h1>
+      <div className="list-container">
+        <AddSet/>
+        <div className="item-list">
+          {
+            state.sets.map((item, index) => {
+              return <SetDetail key={index} count={index} item={item}/>
+            })
+          }
         </div>
-      </main>
-    )
+      </div>
+    </main>)
   }
 }
 
