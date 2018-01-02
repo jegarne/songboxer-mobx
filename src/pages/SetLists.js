@@ -19,6 +19,7 @@ class SetLists extends React.Component {
     state.common.title = 'Set Lists'
     store.setLists.browse();
     store.sets.browse();
+    store.songs.browse();
   }
 
   render() {

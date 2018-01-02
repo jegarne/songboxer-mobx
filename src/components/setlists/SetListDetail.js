@@ -3,6 +3,7 @@ import {observer, inject} from 'mobx-react'
 import EditSetList from './EditSetList'
 import SetEntry from './SetEntry'
 
+
 @inject('store')
 @inject('state')
 @observer

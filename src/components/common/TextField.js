@@ -30,10 +30,10 @@ export default class TextField extends Component {
 }
 }
 
-TextField.propTypes = {
-onChange: PropTypes.func.isRequired
-}
-
-TextField.defaultProps = {
-type: 'text'
-}
+// TextField.propTypes = {
+// onChange: PropTypes.func.isRequired
+// }
+//
+// TextField.defaultProps = {
+// type: 'text'
+// }

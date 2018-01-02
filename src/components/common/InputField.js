@@ -29,10 +29,10 @@ export default class InputField extends Component {
 }
 }
 
-InputField.propTypes = {
-onChange: PropTypes.func.isRequired
-}
-
-InputField.defaultProps = {
-type: 'text'
-}
+// InputField.propTypes = {
+// onChange: PropTypes.func.isRequired
+// }
+//
+// InputField.defaultProps = {
+// type: 'text'
+// }

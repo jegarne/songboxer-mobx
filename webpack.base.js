@@ -29,11 +29,11 @@ module.exports = {
           ]
         }
       }, {
-        test: /\.(jpg|png|svg)(\?.+)?$/,
+        test: /\.(jpg|png)(\?.+)?$/,
         loader: 'url-loader?limit=100000',
         include: [sources('src/assets'), sources('src/client/components')]
       }, {
-        test: /\.(ttf|otf|eot|woff2?)(\?.+)?$/,
+        test: /\.(ttf|otf|eot|svg|woff2?)(\?.+)?$/,
         loader: 'file-loader',
         include: [sources('src/assets'), sources('src/components')]
       }, {
