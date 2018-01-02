@@ -14,6 +14,7 @@ router.post('/api/account/register', account.register)
 router.get('/api/setlists', setlists.getSetLists)
 router.post('/api/setlists/add', setlists.addSetList)
 router.post('/api/setlists/remove', authorize, setlists.removeSetList)
+router.post('/api/setlists/update', setlists.updateSetList)
 
 router.get('/api/sets', sets.getSets)
 router.post('/api/sets/add', sets.addSet)

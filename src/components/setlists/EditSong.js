@@ -2,6 +2,7 @@ import React from 'react'
 import { observable } from 'mobx'
 import { observer, inject } from 'mobx-react'
 import InputField from '../common/InputField'
+import TextField from '../common/TextField'
 
 @inject('store')
 @observer
@@ -30,6 +31,9 @@ class EditSong extends React.Component {
       <div>
       <form onSubmit={this.handleSubmit}>
         <InputField name="title" value={item.title} onChange={this.updateProperty}/>
+        <InputField name="artist" value={item.artist} onChange={this.updateProperty}/>
+        <InputField name="key" value={item.key} onChange={this.updateProperty}/>
+        <InputField name="videoURL" value={item.videoURL} onChange={this.updateProperty}/>
         <input type="submit" value="save" />
       </form>
       </div>

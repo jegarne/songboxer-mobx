@@ -21,6 +21,15 @@ export default class SetLists {
     }
   }
 
+  @action async update(item) {
+    try {
+      await this.request.post(`api/setlists/update`, item)
+      this.state.updateSet(item);
+    } catch(err) {
+      console.error(err)
+    }
+  }
+
   @action async browse() {
     this.state.setLists = await this.request.get(`api/setlists`)
   }

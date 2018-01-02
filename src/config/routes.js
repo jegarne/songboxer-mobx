@@ -5,6 +5,7 @@ import Register from '../pages/Register'
 import SetLists from '../pages/SetLists'
 import Sets from '../pages/Sets'
 import Songs from '../pages/Songs'
+import SongDetail from '../components/setlists/SongDetail'
 
 export default [
   {
@@ -34,5 +35,9 @@ export default [
   {
     path: '/songs',
     component: Songs
+  },
+  {
+    path: '/songdetail/:id',
+    component: SongDetail
   }
 ]

@@ -1,7 +1,7 @@
 import React from 'react'
 import { observer, inject } from 'mobx-react'
 import AddSong from '../components/setlists/AddSong'
-import Song from '../components/setlists/Song'
+import SongEntry from '../components/setlists/SongEntry'
 
 @inject('state')
 @inject('store')
@@ -28,11 +28,11 @@ class Songs extends React.Component {
         <div className="home">
           <AddSong />
           <section className="main">
-            <ul className="item-list">
+            <div className="item-list">
               {state.songs.map((item, index) => {
-                return <Song key={index} item={item}/>
+                return <SongEntry key={index} item={item}/>
               })}
-            </ul>
+            </div>
           </section>
         </div>
       </main>

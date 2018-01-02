@@ -1,4 +1,5 @@
 import { extendObservable, toJS } from 'mobx'
+import { getVideoId } from 'get-video-id'
 
 /**
  * This is our state, we update it
@@ -23,14 +24,14 @@ class State {
 
     }, state)
 
-    this.getSet = (id) => {
-      this.sets.forEach((set) => {
-        if(set.id === id) {
-          return set;
-        }
-      });
+    this.getVideoId = (url) => {
+      return getVideoId(url)
     }
-    
+
+    this.getSet = (id) => {
+      return this.sets.find(s => s.id === id);
+    }
+
     this.updateSet = (set) => {
       this.sets.forEach((set) => {
         if(set.id === item.id) {
@@ -40,14 +41,10 @@ class State {
     }
 
     this.getSong = (id) => {
-      this.songs.forEach((song) => {
-        if(song.id === id) {
-          return song;
-        }
-      });
+      return this.songs.find(s => s.id === id);
     }
 
-    this.updateSong = (song) => {
+    this.updateSong = (item) => {
       this.songs.forEach((song) => {
         if(song.id === item.id) {
           song = item;

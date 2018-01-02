@@ -1,0 +1,77 @@
+
+.title {
+  font-weight: bold;
+}
+
+.artist {
+  font-style: italic;
+}
+
+.key {
+  font-size: 12px;
+}
+
+.video {
+  text-decoration: none;
+}
+
+.notes {
+  font-style: italic;
+  font-size: 12px;
+}
+
+.lyrics {
+  font-style: italic;
+  font-size: 12px;
+}
+
+
+// buttons
+
+.song-detail .detail-button {
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  margin: 0 20px 0 0;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  transition: color 0.2s ease-out;
+}
+
+.song-detail .destroy {
+  color: #cc9a9a;
+}
+
+.song-detail .destroy:hover {
+  color: #af5b5e;
+}
+
+.song-detail .destroy:after {
+  content: 'delete';
+}
+
+.song-detail .edit {
+  color: #8aacb8;
+}
+
+.song-detail .edit:hover {
+  color: #67818a;
+}
+
+.song-detail .edit:after {
+  content: 'edit';
+}
+
+.song-detail .back {
+  color: #8aacb8;
+}
+
+.song-detail .back:hover {
+  color: #67818a;
+}
+
+.song-detail .back:after {
+  content: 'back';
+}

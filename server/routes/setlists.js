@@ -28,6 +28,16 @@ export async function addSetList(ctx) {
   ctx.body = response
 }
 
+export async function updateSetList(ctx) {
+  const { fields } = ctx.request
+
+  if (!fields.title) throw new Exception('[set title] not provided')
+
+  const response = await SetList.findByIdAndUpdate(fields.id, fields, { new: true })
+
+  ctx.body = response
+}
+
 export async function removeSetList(ctx) {
   const { fields } = ctx.request
 

@@ -35,30 +35,22 @@
 .item-list {
   margin: 0;
   padding: 0;
-  list-style: none;
 }
 
-.item-list li {
-  position: relative;
+.item-list p {
   font-size: 24px;
-  border-bottom: 1px solid #ededed;
-  margin-left: 45px;
-  padding-bottom: 10px;
+  margin: 0 0 0 45px;
+  padding: 0;
 }
 
-.item-list li:last-child {
-  border-bottom: none;
-}
-
-.item-list li label {
+.item-list p label {
   float: left;
   margin-right: 1em;
   text-align: right;
 }
 
-.item-list li .destroy {
+.item-list .view .destroy {
   position: absolute;
-  top: 0;
   right: 30px;
   width: 40px;
   height: 40px;
@@ -71,17 +63,16 @@
   transition: color 0.2s ease-out;
 }
 
-.item-list li .destroy:hover {
+.item-list .view .destroy:hover {
   color: #af5b5e;
 }
 
-.item-list li .destroy:after {
+.item-list .view .destroy:after {
   content: 'delete';
 }
 
-.item-list li .edit {
+.item-list .view .edit {
   position: absolute;
-  top: 0;
   right: 75px;
   width: 40px;
   height: 40px;
@@ -94,10 +85,10 @@
   transition: color 0.2s ease-out;
 }
 
-.item-list li .edit:hover {
+.item-list .view .edit:hover {
   color: #67818a;
 }
 
-.item-list li .edit:after {
+.item-list .view .edit:after {
   content: 'edit';
 }

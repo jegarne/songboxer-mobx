@@ -18,6 +18,7 @@ class SetLists extends React.Component {
     const { state, store } = this.props
     state.common.title = 'Set Lists'
     store.setLists.browse();
+    store.sets.browse();
   }
 
   render() {
@@ -28,11 +29,11 @@ class SetLists extends React.Component {
         <div className="home">
           <AddSetList/>
           <section className="main">
-            <ul className="item-list">
+            <div className="item-list">
               {state.setLists.map((item, index) => {
                 return <SetList key={index} item={item}/>
               })}
-            </ul>
+            </div>
           </section>
         </div>
       </main>

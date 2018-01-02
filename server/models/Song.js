@@ -3,6 +3,11 @@ import { Schema } from 'mongoose'
 
 const schema = new Schema({
   title: String,
+  artist: String,
+  videoURL: String,
+  key: String,
+  lyrics: String,
+  notes: String,
   createdBy: {
     type: Schema.Types.ObjectId,
     ref: 'Account'

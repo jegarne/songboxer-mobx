@@ -30,11 +30,11 @@ class Sets extends React.Component {
         <div className="home">
           <AddSet />
           <section className="main">
-            <ul className="item-list">
+            <div className="item-list">
               {state.sets.map((item, index) => {
                 return <Set key={index} item={item}/>
               })}
-            </ul>
+            </div>
           </section>
         </div>
       </main>
