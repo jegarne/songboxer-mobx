@@ -3,30 +3,22 @@ import {observer} from 'mobx-react'
 
 @observer
 export default class InputField extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.onChange = this.onChange.bind(this)
   }
 
-  onChange (event) {
+  onChange(event) {
     this.props.onChange(event.target.name, event.target.value)
   }
 
-  render () {
+  render() {
     const input = this.props
-    return (
-      <div className="form-group">
-        <label htmlFor={input.id}>{input.label || input.name}</label>
-        <input
-            className="Select-control"
-            id={input.id}
-            name={input.name}
-            onChange={this.onChange}
-            type={input.type}
-            value={input.value}/>
-      </div>
-    )
-}
+    return (<div className="form-group">
+      <label htmlFor={input.id}>{input.label || input.name}</label>
+      <input className="Select-control" id={input.id} name={input.name} onChange={this.onChange} type={input.type} value={input.value}/>
+    </div>)
+  }
 }
 
 // InputField.propTypes = {

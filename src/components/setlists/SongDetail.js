@@ -4,6 +4,7 @@ import EditSong from './EditSong'
 import YouTube from 'react-youtube'
 const getVideoId = require('get-video-id');
 import RichTextEditor from 'react-rte/lib/RichTextEditor';
+import DisplayTime from '../common/DisplayTime'
 
 @inject('store')
 @inject('state')
@@ -24,9 +25,9 @@ class SongDetail extends React.Component {
         }
       },
       notes: RichTextEditor.createEmptyValue(),
-      notesBtnText:'Edit',
+      notesBtnText: 'Edit',
       lyrics: RichTextEditor.createEmptyValue(),
-      lyricsBtnText:'Edit'
+      lyricsBtnText: 'Edit'
     };
 
     this.onNotesChange = (notes) => {
@@ -46,12 +47,10 @@ class SongDetail extends React.Component {
         let song = Object.assign({}, this.state.item)
         song.notes = this.state.notes.toString('html')
         this.props.store.songs.update(song).then(() => {
-          this.setState({areNotesReadOnly: true,
-            notesBtnText:'Edit'})
+          this.setState({areNotesReadOnly: true, notesBtnText: 'Edit'})
         })
       } else {
-        this.setState({areNotesReadOnly: false,
-          notesBtnText:'Save'})
+        this.setState({areNotesReadOnly: false, notesBtnText: 'Save'})
       }
     }
 
@@ -60,18 +59,27 @@ class SongDetail extends React.Component {
         let song = Object.assign({}, this.state.item)
         song.lyrics = this.state.lyrics.toString('html')
         this.props.store.songs.update(song).then(() => {
-          this.setState({areLyricsReadOnly: true,
-            lyricsBtnText:'Edit'})
+          this.setState({areLyricsReadOnly: true, lyricsBtnText: 'Edit'})
         })
       } else {
-        this.setState({areLyricsReadOnly: false,
-          lyricsBtnText:'Save'})
+        this.setState({areLyricsReadOnly: false, lyricsBtnText: 'Save'})
       }
     }
 
     this.onPlayerReady = (event) => {
-      // access to player in all event handlers via event.target
       event.target.pauseVideo();
+      // grab duration from video if needed
+      if (!this.state.item.seconds) {
+        let duration = event.target.getDuration()
+        let song = Object.assign({}, this.state.item)
+        song.seconds = duration
+        this.setState({item:song})
+      }
+    }
+
+    this.deleteSong = () => {
+      this.props.store.songs.remove(this.state.item)
+      this.props.history.push('/songs')
     }
   } // end contructor
 
@@ -111,12 +119,13 @@ class SongDetail extends React.Component {
           : <div className="song-detail">
               <div>
                 <button className="detail-button edit" onClick={(e) => this.setState({isEdit: true})}/>
-                <button className="detail-button destroy" onClick={(e) => store.songs.remove(item)}/>
+                <button className="detail-button destroy" onClick={this.deleteSong}/>
               </div>
               <h2 className="title">{item.title}</h2>
               <p>
                 <span className="artist">{item.artist}</span>{' | '}
                 <span className="key">Key: {item.key}</span>{' | '}
+                <DisplayTime seconds={item.seconds} />{' | '}
                 <span>
                   {
                     (item.videoURL)
@@ -133,23 +142,26 @@ class SongDetail extends React.Component {
               }
             </div>
       }
+      <br/>
       <p>
         <button className="song-button" onClick={(e) => this.toggleNotes()}>
           {this.state.notesBtnText + ' Notes'}</button>
       </p>
-      <div style={{width:'640px'}}>
-        <RichTextEditor value={this.state.notes}
-          onChange={this.onNotesChange}
-          readOnly={this.state.areNotesReadOnly}/>
+      <div style={{
+          width: '640px'
+        }}>
+
+        <RichTextEditor value={this.state.notes} onChange={this.onNotesChange} readOnly={this.state.areNotesReadOnly}/>
       </div>
+      <br/>
       <p>
         <button className="song-button" onClick={(e) => this.toggleLyrics()}>
           {this.state.lyricsBtnText + ' Lyrics'}</button>
       </p>
-      <div style={{width:'640px'}}>
-        <RichTextEditor value={this.state.lyrics}
-          onChange={this.onLyricsChange}
-          readOnly={this.state.areLyricsReadOnly}/>
+      <div style={{
+          width: '640px'
+        }}>
+        <RichTextEditor value={this.state.lyrics} onChange={this.onLyricsChange} readOnly={this.state.areLyricsReadOnly}/>
       </div>
 
     </main>)

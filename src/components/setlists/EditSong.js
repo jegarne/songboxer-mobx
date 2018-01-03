@@ -2,7 +2,7 @@ import React from 'react'
 import {observable} from 'mobx'
 import {observer, inject} from 'mobx-react'
 import InputField from '../common/InputField'
-import TextField from '../common/TextField'
+import EditTime from '../common/EditTime'
 
 @inject('store')
 @observer
@@ -32,7 +32,9 @@ class EditSong extends React.Component {
         <InputField name="title" value={item.title} onChange={this.updateProperty}/>
         <InputField name="artist" value={item.artist} onChange={this.updateProperty}/>
         <InputField name="key" value={item.key} onChange={this.updateProperty}/>
+        <a href={'https://www.youtube.com/results?search_query=' + item.title} target="_blank">Search Video</a>
         <InputField name="videoURL" value={item.videoURL} onChange={this.updateProperty}/>
+        <EditTime name="seconds" value={item.seconds} onChange={this.updateProperty}/>
         <input type="submit" value="save"/>
       </form>
     </div>)

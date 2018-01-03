@@ -9,16 +9,18 @@ import SetDetail from '../components/setlists/SetDetail'
 class Sets extends React.Component {
 
   // When route is loaded (isomorphic)
-  // static async onEnter({ state, store }, params) {
-  //   state.common.title = 'Sets'
-  //   await store.sets.browse()
-  // }
+  static async onEnter({ state, store }, params) {
+    state.common.title = 'Sets'
+    await store.setLists.browse()
+    await store.sets.browse()
+    await store.songs.browse();
+  }
 
   componentDidMount() {
     const {state, store} = this.props
     state.common.title = 'Sets'
-    store.sets.browse();
-    store.songs.browse();
+    // store.sets.browse();
+    // store.songs.browse();
   }
 
   render() {

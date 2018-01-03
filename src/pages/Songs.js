@@ -9,15 +9,17 @@ import SongEntry from '../components/setlists/SongEntry'
 class Songs extends React.Component {
 
   // When route is loaded (isomorphic)
-  // static async onEnter({ state, store }, params) {
-  //   state.common.title = 'Songs'
-  //   await store.songs.browse()
-  // }
+  static async onEnter({ state, store }, params) {
+    state.common.title = 'Songs'
+    await store.setLists.browse()
+    await store.sets.browse()
+    await store.songs.browse();
+  }
 
   componentDidMount() {
     const { state, store } = this.props
     state.common.title = 'Songs'
-    store.songs.browse();
+    // store.songs.browse();
   }
 
   render() {

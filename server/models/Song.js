@@ -8,6 +8,7 @@ const schema = new Schema({
   key: String,
   lyrics: String,
   notes: String,
+  seconds: Number,
   createdBy: {
     type: Schema.Types.ObjectId,
     ref: 'Account'

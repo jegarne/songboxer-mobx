@@ -1,6 +1,7 @@
 import React from 'react'
 import { observer, inject } from 'mobx-react'
 import {Link} from 'react-router-dom'
+import DisplayTime from '../common/DisplayTime'
 
 @inject('store')
 @observer
@@ -15,7 +16,9 @@ class SongEntry extends React.Component {
     return (
       <div className="list-entry">
         <p className="title">
-          <Link to={"/songdetail/" + item.id}>{count+1}. {item.title}</Link>
+          {count+1}.{' '}
+          <Link to={"/songdetail/" + item.id}>{item.title}</Link>
+          {' ('}<DisplayTime seconds={item.seconds} />{')'}
         </p>
       </div>
     )
